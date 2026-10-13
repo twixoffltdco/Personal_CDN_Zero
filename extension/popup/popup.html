@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- popup/popup.html — тулбарная кнопка расширения: «Отправить в Personal CDN» + настройки -->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Personal CDN Zero</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="hdr">
+    <span class="logo">⚡</span>
+    <div>
+      <h1>Personal CDN Zero</h1>
+      <p class="sub">Link Sniffer · без API и OAuth</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Действие для активного таба (если это поддерживаемое облако) -->
+    <button id="sendBtn" class="primary">📤 Отправить в Personal CDN</button>
+    <p id="status" class="status"></p>
+
+    <!-- Ручной ввод: гостевой режим без расширения -->
+    <section class="card">
+      <label for="manualUrl">Вставить прямую ссылку вручную</label>
+      <div class="row">
+        <input id="manualUrl" type="url" placeholder="https://dl.dropboxusercontent.com/s/...?dl=1">
+        <button id="manualBtn" class="ghost">OK</button>
+      </div>
+      <p id="cdnOut" class="mono hidden"></p>
+    </section>
+
+    <!-- Настройки -->
+    <section class="card">
+      <label for="siteInput">Адрес вашего сайта Personal CDN</label>
+      <input id="siteInput" type="url" placeholder="https://cdn.example.personal">
+      <button id="saveSite" class="ghost small">Сохранить</button>
+    </section>
+
+    <!-- История последних отправок -->
+    <section class="card">
+      <h2>История</h2>
+      <ul id="history" class="hist"></ul>
+    </section>
+  </main>
+
+  <footer>MIT License · Open Source · <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

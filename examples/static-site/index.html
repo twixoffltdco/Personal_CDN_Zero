@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- examples/static-site/index.html — использование Personal CDN Zero на статическом сайте.
+     Просто откройте файл в браузере: все ресурсы грузятся через ваш edge-прокси с CORS и кэшем. -->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Демо: статический сайт + Personal CDN Zero</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; background:#0b1c33; color:#e2e8f0; }
+    img, video { max-width: 100%; border-radius: 12px; }
+    .card { background:#12263f; padding:16px; border-radius:12px; margin-bottom:16px; }
+    code { color:#7cc0ff; }
+  </style>
+</head>
+<body>
+  <h1>🌐 Демо: любой статический сайт + ваш облачный CDN</h1>
+
+  <div class="card">
+    <h2>1. Изображения (CORS не нужен, но кэш работает)</h2>
+    <!-- Замените URL на свой из дашборда Personal CDN Zero -->
+    <img src="https://cdn.example.personal/cdn/packs/file.ext?url=https%3A%2F%2Fdl.dropboxusercontent.com%2Fs%2Fabcd%2Fcover.jpg%3Fdl%3D1" alt="Обложка с Dropbox через ваш CDN">
+  </div>
+
+  <div class="card">
+    <h2>2. Видео с Range-докачкой (перемотка работает!)</h2>
+    <video controls preload="metadata" src="https://cdn.example.personal/cdn/packs/file.ext?url=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D1abc%26export%3Ddownload"></video>
+  </div>
+
+  <div class="card">
+    <h2>3. fetch() JSON-конфига со стороннего домена</h2>
+    <p id="out">Загрузка…</p>
+    <script>
+      // Благодаря Access-Control-Allow-Origin: * на прокси — fetch с любого сайта проходит.
+      const CDN = 'https://cdn.example.personal/api/cdn';
+      const direct = encodeURIComponent('https://dl.dropboxusercontent.com/s/abcd/config.json?dl=1');
+      fetch(`${CDN}?url=${direct}`)
+        .then(r => r.ok ? r.json() : Promise.reject(new Error('LINK_EXPIRED')))
+        .then(j => document.getElementById('out').textContent = JSON.stringify(j))
+        .catch(e => document.getElementById('out').textContent = '⚠️ ' + e.message + '. Обновите ссылку через расширение.');
+    </script>
+  </div>
+
+  <div class="card">
+    <h2>4. Шрифты (@font-face требует CORS — получен)</h2>
+    <style>
+      @font-face {
+        font-family: 'CloudFont';
+        src: url('https://cdn.example.personal/cdn/packs/file.ext?url=https%3A%2F%2Fonedrive.live.com%2Fdownload%3Fresid%3DABC%25211%26authkey%3Dkey') format('woff2');
+        font-display: swap;
+      }
+      .cloud-font { font-family: 'CloudFont', system-ui; }
+    </style>
+    <p class="cloud-font">Этот текст набран шрифтом, лежащим в вашем OneDrive, через личный CDN.</p>
+  </div>
+
+  <p><small>MIT · Personal CDN Zero · Без API и платных хранилищ</small></p>
+</body>
+</html>

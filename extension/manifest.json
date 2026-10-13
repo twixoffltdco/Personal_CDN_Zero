@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "Personal CDN Zero — Link Sniffer",
+  "version": "1.0.0",
+  "description": "Умный сниффер: находит прямые ссылки на скачивание в Dropbox, Google Drive, OneDrive, Yandex Disk и отправляет их в ваш Personal CDN. Без API, без OAuth.",
+  "minimum_chrome_version": "109",
+
+  "action": {
+    "default_title": "Отправить в Personal CDN",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.dropbox.com/*", "https://dropbox.com/*", "https://dl.dropboxusercontent.com/*"],
+      "js": ["content/common.js", "content/dropbox.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://drive.google.com/*", "https://docs.google.com/*"],
+      "js": ["content/common.js", "content/gdrive.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://onedrive.live.com/*", "https://1drv.ms/*", "https://*.sharepoint.com/*"],
+      "js": ["content/common.js", "content/onedrive.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://disk.yandex.ru/*", "https://disk.yandex.com/*", "https://disk.yandex.net/*"],
+      "js": ["content/common.js", "content/yandex.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://mega.nz/*", "https://mega.co.nz/*"],
+      "js": ["content/common.js", "content/mega.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardWrite",
+    "tabs",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "https://www.dropbox.com/*",
+    "https://dl.dropboxusercontent.com/*",
+    "https://drive.google.com/*",
+    "https://docs.google.com/*",
+    "https://onedrive.live.com/*",
+    "https://*.sharepoint.com/*",
+    "https://disk.yandex.ru/*",
+    "https://disk.yandex.com/*",
+    "https://disk.yandex.net/*",
+    "https://mega.nz/*",
+    "https://*.personal-cdn-zero.example/*"
+  ],
+
+  "options_page": "popup/popup.html",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

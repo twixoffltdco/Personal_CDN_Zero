@@ -1,0 +1,17 @@
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3111
+  - Network:      http://0.0.0.0:3111
+
+ ✓ Starting...
+ ✓ Ready in 56ms
+ ⨯ TypeError: Cannot read properties of undefined (reading 'searchParams')
+    at p (/workspace/.next/standalone/.next/server/app/cdn/[folder]/[file]/route.js:1:4408)
+    at p (/workspace/.next/standalone/.next/server/app/cdn/[folder]/[file]/route.js:1:1386)
+    at /workspace/.next/standalone/.next/server/edge-chunks/755.js:6:82924
+    at /workspace/.next/standalone/.next/server/edge-chunks/755.js:6:99797
+    at i.with (/workspace/.next/standalone/.next/server/edge-chunks/755.js:1:11313)
+    at l.with (/workspace/.next/standalone/.next/server/edge-chunks/755.js:1:5513)
+    at l.startActiveSpan (/workspace/.next/standalone/.next/server/edge-chunks/755.js:1:20565)
+    at i.startActiveSpan (/workspace/.next/standalone/.next/server/edge-chunks/755.js:1:21099)
+    at /workspace/.next/standalone/.next/server/edge-chunks/755.js:6:99344
+    at i.with (/workspace/.next/standalone/.next/server/edge-chunks/755.js:1:11313)

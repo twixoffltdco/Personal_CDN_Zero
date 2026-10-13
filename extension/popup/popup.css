@@ -1,0 +1,25 @@
+/* popup/popup.css — стили вспашки расширения (без фреймворков, MV3-safe) */
+:root { --b: #2b8cff; --d: #0b1c33; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { width: 360px; font: 14px/1.45 system-ui, sans-serif; color: var(--d); background: #f7fafd; padding: 12px; }
+.hdr { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+.logo { font-size: 26px; }
+h1 { font-size: 15px; } h2 { font-size: 13px; margin-bottom: 6px; }
+.sub { color: #64748b; font-size: 11px; }
+button { cursor: pointer; border: none; border-radius: 8px; font-weight: 600; }
+.primary { width: 100%; background: var(--b); color: #fff; padding: 11px; font-size: 14px; }
+.primary:hover { background: #1f6fe0; }
+.ghost { background: #e2ecf7; color: var(--d); padding: 8px 12px; }
+.ghost.small { font-size: 12px; margin-top: 6px; }
+.status { min-height: 18px; font-size: 12px; margin: 6px 0; color: #16a34a; }
+.card { background: #fff; border: 1px solid #dbe6f2; border-radius: 10px; padding: 10px; margin-top: 10px; }
+.card label { display: block; font-size: 12px; color: #475569; margin-bottom: 4px; }
+.row { display: flex; gap: 6px; }
+input[type="url"] { width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; }
+.mono { font-family: ui-monospace, monospace; font-size: 11px; word-break: break-all; background: #eef7ff; padding: 6px; border-radius: 6px; margin-top: 6px; }
+.hidden { display: none; }
+.hist { list-style: none; max-height: 160px; overflow: auto; }
+.hist li { padding: 6px 0; border-bottom: 1px dashed #e2e8f0; font-size: 12px; cursor: pointer; }
+.hist li:hover { color: var(--b); }
+footer { margin-top: 12px; font-size: 11px; color: #94a3b8; text-align: center; }
+footer a { color: #94a3b8; }
