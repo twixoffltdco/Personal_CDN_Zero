@@ -1,0 +1,61 @@
+{
+  "version": 3,
+  "middleware": {},
+  "functions": {
+    "/cdn/[folder]/[file]/route": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "prerender-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/755.js",
+        "server/app/cdn/[folder]/[file]/route.js"
+      ],
+      "name": "app/cdn/[folder]/[file]/route",
+      "page": "/cdn/[folder]/[file]/route",
+      "matchers": [
+        {
+          "regexp": "^/cdn/(?<folder>[^/]+?)/(?<file>[^/]+?)$",
+          "originalSource": "/cdn/[folder]/[file]"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "environments": {
+        "previewModeId": "f1e0870b5a8ae139bf3f16b3d20c4248",
+        "previewModeSigningKey": "83218dc34ac7ef23edb255430a96b9633c3c8a009ff5a417c6920a76a39798be",
+        "previewModeEncryptionKey": "b8cd5cef8ff0d1e4f05f98f3ddab4e23823576047508807cd832b4258cf8a483"
+      }
+    },
+    "/api/cdn/route": {
+      "files": [
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "prerender-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/755.js",
+        "server/app/api/cdn/route.js"
+      ],
+      "name": "app/api/cdn/route",
+      "page": "/api/cdn/route",
+      "matchers": [
+        {
+          "regexp": "^/api/cdn$",
+          "originalSource": "/api/cdn"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "environments": {
+        "previewModeId": "f1e0870b5a8ae139bf3f16b3d20c4248",
+        "previewModeSigningKey": "83218dc34ac7ef23edb255430a96b9633c3c8a009ff5a417c6920a76a39798be",
+        "previewModeEncryptionKey": "b8cd5cef8ff0d1e4f05f98f3ddab4e23823576047508807cd832b4258cf8a483"
+      }
+    }
+  },
+  "sortedMiddleware": []
+}

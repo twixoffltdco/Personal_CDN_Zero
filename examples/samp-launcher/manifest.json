@@ -1,0 +1,25 @@
+{
+  "version": "1.4.2",
+  "note": "Пример манифеста для современного SA-MP лаунчера. URL получены расширением Personal CDN Zero.",
+  "files": [
+    {
+      "name": "client-mods.zip",
+      "url": "https://cdn.example.personal/cdn/samp-client/client-mods.zip?url=https%3A%2F%2Fdl.dropboxusercontent.com%2Fs%2Fabcd%2Fclient-mods.zip%3Fdl%3D1",
+      "mirrors": [
+        "https://cdn.example.personal/cdn/samp-client/client-mods.zip?url=https%3A%2F%2Fonedrive.live.com%2Fdownload%3Fresid%3DABC%25211%26authkey%3Dkey",
+        "https://external-cdn.example.org/mirrors/client-mods.zip"
+      ],
+      "mirror_note": "Первое зеркало — наш CDN (другое облако-источник). Второе — внешний CDN: используется лаунчером напрямую, нашим прокси не обрабатывается.",
+      "size": 104857600,
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "target": "mods/client-mods.zip"
+    },
+    {
+      "name": "sounds-pack.zip",
+      "url": "https://cdn.example.personal/cdn/samp-sounds/sounds-pack.zip?url=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D1XyZwVuTsRqPoNmLkJiHgFeDcBa%26export%3Ddownload",
+      "size": 52428800,
+      "md5": "098f6bcd4621d373cade4e832627b4f6",
+      "target": "audio/sounds-pack.zip"
+    }
+  ]
+}

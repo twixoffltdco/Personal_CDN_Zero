@@ -1,0 +1,33 @@
+# deploy/tatnet/deploy.yml — конфигурация деплоя для Tatnet Cloud (CI/CD из Git).
+# Кладите файл в корень репозитория или укажите путь в настройках приложения Tatnet.
+# Платформа собирает Docker-образ по нашему /Dockerfile и запускает standalone Next.js.
+
+version: "1"
+
+app: personal-cdn-zero
+runtime: container            # контейнерный рантайм (Node 20 внутри)
+
+build:
+  dockerfile: ./Dockerfile
+  context: .
+  cache: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+  NODE_ENV: production
+  PORT: "3000"
+
+routes:
+  - path: /cdn/*           # edge-прокси — без кэширования на уровне платформы,
+    cache: false               # кэш отдаёт сам прокси через Cache-Control
+    timeout: 60s               # крупные файлы должны успеть достримиться
+  - path: /*
+    cache: static              # лендинг/дашборд — обычный статический кэш CDN Tatnet
+
+resources:
+  plan: free                   # бесплатный тариф Tatnet справляется: ядро лёгкое
+  regions: [ru]                # российские edge-точки — минимальный пинг до Яндекс.Диска
+
+healthcheck:
+  path: /cdn               # без ?url → мгновенный 400 JSON = «сервис жив»
+  interval: 30s
